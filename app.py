@@ -15,7 +15,7 @@ load_css("style.css")
 
 # === KONFIGURASI ===
 API_KEY = "AIzaSyD__OOKMY8wXu1Sudpcyh3ECdBYlj09h2U"
-csv_path = r"C:\Users\SALWA KHAIRU MISTA\Downloads\data.csv"
+csv_path = r"data.csv"
 history_path = "chat_history.json"
 # rf_model_path = "model_rf_tfidf.joblib" 
 # vectorizer_path = "tfidf_vectorizer.joblib" 
@@ -177,4 +177,5 @@ if prompt := st.chat_input("Tanyakan sesuatu..."):
 
     st.session_state.all_chats[st.session_state.active_chat] = messages
     save_history()
+
     st.rerun()
