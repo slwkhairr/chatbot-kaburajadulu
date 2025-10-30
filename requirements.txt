@@ -1,5 +1,7 @@
 streamlit
 pandas
 langchain
+langchain-core>=0.1.35
 langchain-google-genai
 google-generativeai
+joblib
