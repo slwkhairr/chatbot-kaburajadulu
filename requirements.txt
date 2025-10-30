@@ -1,7 +1,7 @@
 streamlit
 pandas
-langchain
+langchain>=0.1.16
 langchain-core>=0.1.35
-langchain-google-genai
-google-generativeai
+langchain-google-genai>=0.0.6
+google-generativeai>=0.3.2
 joblib
