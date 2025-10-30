@@ -1,0 +1,198 @@
+/* -------- Color Variables -------- */
+:root {
+  --accent: #4b5563;
+  --primary: #f8fafc;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --glass: rgba(255, 255, 255, 0.85);
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* -------- Global -------- */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+  background: linear-gradient(145deg, #f9fafb 0%, #f1f5f9 100%);
+  color: #111827;
+}
+
+/* -------- Header -------- */
+.header {
+  text-align: center;
+  background: linear-gradient(135deg, #ffffff 0%, #ccd0d7 100%);
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: -16px auto 32px;
+  width: 86%;
+  max-width: 1100px;
+}
+.header h1 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.header h3 {
+  margin-top: 8px;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* -------- Chat Bubble Style -------- */
+.stChatMessage {
+  padding: 14px 18px !important;
+  border-radius: var(--radius) !important;
+  margin: 12px 0 !important;
+  line-height: 1.65 !important;
+  box-shadow: var(--shadow);
+  max-width: 88%;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.stChatMessage:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  border: 1px solid #d1d5db;
+}
+
+/* User (kanan) */
+[data-testid="stChatMessage-user"] {
+  background: linear-gradient(120deg, #f3f4f6, #e5e7eb) !important;
+  color: #111827 !important;
+  align-self: flex-end !important;
+  border-bottom-right-radius: 6px !important;
+  text-align: right !important;
+}
+
+/* Assistant (kiri) */
+[data-testid="stChatMessage-assistant"] {
+  background: linear-gradient(180deg, #ffffff, #f3f4f6) !important;
+  color: #111827 !important;
+  align-self: flex-start !important;
+  border-bottom-left-radius: 6px !important;
+}
+
+/* Code block */
+.stChatMessage pre {
+  background: #1f2937 !important;
+  color: #f3f4f6 !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
+  overflow: auto !important;
+  font-size: 13px !important;
+}
+
+/* -------- Sidebar Container -------- */
+section[data-testid="stSidebar"] {
+  background-color: var(--primary);
+  padding: 24px 18px;
+  border-right: 1px solid #e5e7eb; /* garis pembatas sidebar */
+  overflow-y: auto;
+  max-height: 100vh;
+  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+section[data-testid="stSidebar"]::-webkit-scrollbar {
+  width: 6px;
+}
+section[data-testid="stSidebar"]::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 10px;
+}
+
+/* -------- Chat List Buttons -------- */
+.sidebar-chat-button {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  margin-bottom: 6px;
+  background: none;
+  color: #1f2937;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+  border: none; /* hilangkan border tombol */
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.sidebar-chat-button:hover {
+  color: #374151;
+}
+.sidebar-chat-button.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* -------- New Chat Button -------- */
+.stSidebar .stButton button {
+  width: 100%;
+  background: none;
+  color: var(--accent) !important;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 0;
+  border: none; /* hilangkan border tombol */
+  border-radius: 0;
+  text-align: left;
+  transition: color 0.2s ease;
+}
+.stSidebar .stButton button:hover {
+  color: #374151;
+  background: none;
+  transform: none;
+}
+
+/* -------- Delete Icon -------- */
+.sidebar-chat-button-delete {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 8px;
+  transition: color 0.2s ease;
+}
+.sidebar-chat-button-delete:hover {
+  color: #111827;
+}
+
+
+/* -------- Inputs -------- */
+textarea, input, .stTextInput>div>div>input {
+  border-radius: 10px !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  padding: 10px !important;
+  background: var(--glass) !important;
+  font-size: 14px !important;
+}
+
+/* -------- Scrollbar Global -------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}
+
+/* -------- Responsive -------- */
+@media (max-width: 900px) {
+  .header {
+    width: 94%;
+    padding: 20px;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  .stChatMessage {
+    max-width: 96% !important;
+  }
+}
