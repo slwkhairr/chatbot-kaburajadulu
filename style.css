@@ -183,6 +183,52 @@ textarea, input, .stTextInput>div>div>input {
   border-radius: 10px;
 }
 
+/* -------- Chat Input Prompt & Button Responsive -------- */
+[data-testid="stChatInput"] textarea {
+  border-radius: 10px !important;
+  padding: 12px !important;
+  font-size: 15px !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Tombol kirim (ikon pesawat) */
+[data-testid="stChatInput"] button {
+  background-color: transparent !important;
+  border: none !important;
+  color: #4b5563 !important;
+  font-size: 18px !important;
+  padding: 6px 10px !important;
+  transition: color 0.3s ease;
+}
+[data-testid="stChatInput"] button:hover {
+  color: #1f2937 !important;
+}
+
+/* Mode terang */
+@media (prefers-color-scheme: light) {
+  [data-testid="stChatInput"] textarea {
+    background-color: #f9fafb !important;
+    color: #1f2937 !important;
+  }
+}
+
+/* Mode gelap */
+@media (prefers-color-scheme: dark) {
+  [data-testid="stChatInput"] textarea {
+    background-color: #1f2937 !important;
+    color: #f3f4f6 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+  [data-testid="stChatInput"] button {
+    color: #d1d5db !important;
+  }
+  [data-testid="stChatInput"] button:hover {
+    color: #ffffff !important;
+  }
+}
+
+
 /* -------- Responsive -------- */
 @media (max-width: 900px) {
   .header {
