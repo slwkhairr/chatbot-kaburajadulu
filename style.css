@@ -1,69 +1,96 @@
+/* -------- Fonts -------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap');
+
 /* -------- Color Variables -------- */
 :root {
-  --accent: #4b5563;
-  --primary: #f8fafc;
-  --muted: #6b7280;
+  /* Light Mode */
+  --bg: #f8fafc;
+  --text: #111827;
   --card: #ffffff;
-  --glass: rgba(255, 255, 255, 0.85);
-  --radius: 12px;
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --sidebar: #f9fafb;
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --accent: #4b5563;
+  --accent-hover: #374151;
+  --muted: #6b7280;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 8px 18px rgba(0, 0, 0, 0.08);
+  --radius: 14px;
+}
+
+/* -------- Dark Mode -------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f172a;
+    --text: #f3f4f6;
+    --card: #1e293b;
+    --sidebar: #111827;
+    --input-bg: #1f2937;
+    --accent: #9ca3af;
+    --accent-hover: #f9fafb;
+    --muted: #9ca3af;
+    --shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    --shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.6);
+  }
 }
 
 /* -------- Global -------- */
 html, body {
   height: 100%;
   margin: 0;
-  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
-  background: linear-gradient(145deg, #f9fafb 0%, #f1f5f9 100%);
-  color: #111827;
+  font-family: 'Inter Tight', 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 /* -------- Header -------- */
 .header {
   text-align: center;
-  background: linear-gradient(135deg, #ffffff 0%, #ccd0d7 100%);
-  padding: 20px 24px;
+  background: var(--card);
+  padding: 28px 32px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  margin: -16px auto 32px;
-  width: 86%;
+  margin: -8px auto 32px;
+  width: 85%;
   max-width: 1100px;
+  transition: all 0.3s ease;
+}
+.header:hover {
+  box-shadow: var(--shadow-hover);
 }
 .header h1 {
   margin: 0;
-  color: #1f2937;
-  font-size: 2.2rem;
-  font-weight: 800;
+  color: var(--text);
+  font-size: 2.4rem;
+  font-weight: 700;
   letter-spacing: -0.5px;
 }
 .header h3 {
-  margin-top: 8px;
+  margin-top: 10px;
   color: var(--muted);
   font-weight: 500;
   font-size: 1rem;
 }
 
-/* -------- Chat Bubble Style -------- */
+/* -------- Chat Bubble -------- */
 .stChatMessage {
   padding: 14px 18px !important;
   border-radius: var(--radius) !important;
   margin: 12px 0 !important;
-  line-height: 1.65 !important;
+  line-height: 1.7 !important;
   box-shadow: var(--shadow);
   max-width: 88%;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .stChatMessage:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
-  border: 1px solid #d1d5db;
 }
 
 /* User (kanan) */
 [data-testid="stChatMessage-user"] {
-  background: linear-gradient(120deg, #f3f4f6, #e5e7eb) !important;
-  color: #111827 !important;
+  background: linear-gradient(120deg, #334155, #1e293b) !important;
+  color: #f9fafb !important;
   align-self: flex-end !important;
   border-bottom-right-radius: 6px !important;
   text-align: right !important;
@@ -71,174 +98,72 @@ html, body {
 
 /* Assistant (kiri) */
 [data-testid="stChatMessage-assistant"] {
-  background: linear-gradient(180deg, #ffffff, #f3f4f6) !important;
-  color: #111827 !important;
+  background: linear-gradient(180deg, #1e293b, #0f172a) !important;
+  color: #f9fafb !important;
   align-self: flex-start !important;
   border-bottom-left-radius: 6px !important;
 }
 
-/* Code block */
-.stChatMessage pre {
-  background: #1f2937 !important;
-  color: #f3f4f6 !important;
-  padding: 12px !important;
-  border-radius: 8px !important;
-  overflow: auto !important;
-  font-size: 13px !important;
-}
-
-/* -------- Sidebar Container -------- */
+/* -------- Sidebar -------- */
 section[data-testid="stSidebar"] {
-  background-color: var(--primary);
-  padding: 24px 18px;
-  border-right: 1px solid #e5e7eb; /* garis pembatas sidebar */
+  background-color: var(--sidebar);
+  color: var(--text);
+  padding: 26px 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
   overflow-y: auto;
   max-height: 100vh;
-  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
   scrollbar-width: thin;
-  scrollbar-color: #d1d5db transparent;
-}
-section[data-testid="stSidebar"]::-webkit-scrollbar {
-  width: 6px;
-}
-section[data-testid="stSidebar"]::-webkit-scrollbar-thumb {
-  background-color: #d1d5db;
-  border-radius: 10px;
+  scrollbar-color: #4b5563 transparent;
+  transition: background 0.3s ease;
 }
 
-/* -------- Chat List Buttons -------- */
+/* -------- Sidebar Buttons -------- */
 .sidebar-chat-button {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  padding: 8px 0;
-  margin-bottom: 6px;
   background: none;
-  color: #1f2937;
+  color: var(--text);
   font-size: 15px;
   font-weight: 500;
-  font-family: 'Inter', 'Poppins', system-ui, sans-serif;
-  border: none; /* hilangkan border tombol */
-  text-align: left;
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  margin-bottom: 6px;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
 }
 .sidebar-chat-button:hover {
-  color: #374151;
+  background: rgba(255, 255, 255, 0.06);
 }
 .sidebar-chat-button.active {
-  color: var(--accent);
-  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* -------- New Chat Button -------- */
-.stSidebar .stButton button {
-  width: 100%;
-  background: none;
-  color: var(--accent) !important;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 10px 0;
-  border: none; /* hilangkan border tombol */
-  border-radius: 0;
-  text-align: left;
-  transition: color 0.2s ease;
-}
-.stSidebar .stButton button:hover {
-  color: #374151;
-  background: none;
-  transform: none;
-}
-
-/* -------- Delete Icon -------- */
-.sidebar-chat-button-delete {
-  background: none;
-  border: none;
-  color: #9ca3af;
-  font-size: 16px;
-  cursor: pointer;
-  padding: 4px;
-  margin-left: 8px;
-  transition: color 0.2s ease;
-}
-.sidebar-chat-button-delete:hover {
-  color: #111827;
-}
-
-
-/* -------- Inputs -------- */
-textarea, input, .stTextInput>div>div>input {
-  border-radius: 10px !important;
-  border: 1px solid rgba(15, 23, 42, 0.08) !important;
-  padding: 10px !important;
-  background: var(--glass) !important;
-  font-size: 14px !important;
-}
-
-/* -------- Scrollbar Global -------- */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: #d1d5db;
-  border-radius: 10px;
-}
-
-/* -------- Chat Input Prompt & Button Responsive -------- */
+/* -------- Input Chat -------- */
 [data-testid="stChatInput"] textarea {
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   padding: 12px !important;
   font-size: 15px !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
-  transition: background 0.3s ease, color 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background-color: var(--input-bg) !important;
+  color: var(--text) !important;
+  transition: box-shadow 0.2s ease;
+}
+[data-testid="stChatInput"] textarea:focus {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
 }
 
-/* Tombol kirim (ikon pesawat) */
+/* Tombol kirim */
 [data-testid="stChatInput"] button {
-  background-color: transparent !important;
+  background: none !important;
   border: none !important;
-  color: #4b5563 !important;
+  color: var(--accent) !important;
   font-size: 18px !important;
   padding: 6px 10px !important;
   transition: color 0.3s ease;
 }
 [data-testid="stChatInput"] button:hover {
-  color: #1f2937 !important;
-}
-
-/* Mode terang */
-@media (prefers-color-scheme: light) {
-  [data-testid="stChatInput"] textarea {
-    background-color: #f9fafb !important;
-    color: #1f2937 !important;
-  }
-}
-
-/* Mode gelap */
-@media (prefers-color-scheme: dark) {
-  [data-testid="stChatInput"] textarea {
-    background-color: #1f2937 !important;
-    color: #f3f4f6 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  }
-  [data-testid="stChatInput"] button {
-    color: #d1d5db !important;
-  }
-  [data-testid="stChatInput"] button:hover {
-    color: #ffffff !important;
-  }
-}
-
-
-/* -------- Responsive -------- */
-@media (max-width: 900px) {
-  .header {
-    width: 94%;
-    padding: 20px;
-  }
-  .header h1 {
-    font-size: 1.8rem;
-  }
-  .stChatMessage {
-    max-width: 96% !important;
-  }
+  color: var(--accent-hover) !important;
 }
